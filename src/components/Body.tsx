@@ -1,11 +1,13 @@
 import React from "react";
 import TagTopBar from "./TagTopBar";
+import LlmCardsWrapper from "./LlmCardsWrapper";
 
 const Body = () => {
   return (
-    <div>
+    <>
       <TagTopBar />
-    </div>
+      <LlmCardsWrapper />
+    </>
   );
 };
 

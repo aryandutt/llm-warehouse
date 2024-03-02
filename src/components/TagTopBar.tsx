@@ -1,11 +1,11 @@
 import React from "react";
 import SearchBar from "./SearchBar";
-import SortButton from "./SortButton";
-import FilterButton from "./FilterButton";
+import SortButton from "./buttons/SortButton";
+import FilterButton from "./buttons/FilterButton";
 
 const TagTopBar = () => {
   return (
-    <div className="py-5 px-8 flex w-100vw justify-between items-baseline">
+    <div className="pt-8 px-8 flex w-100vw justify-between items-baseline">
       <div className="flex gap-8 items-center">
         <div className="flex items-baseline gap-2">
           <div className="text-2xl from-stone-700 font-mono">Models</div>
