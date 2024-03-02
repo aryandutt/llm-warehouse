@@ -19,7 +19,7 @@ const NavBar = () => {
           </Button>
         </div>
         <div className="p-1">
-          <Button color="red">
+          <Button className="bg-gray-900">
             <Link href="/">Signup</Link>
           </Button>
         </div>

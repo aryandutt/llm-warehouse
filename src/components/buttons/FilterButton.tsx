@@ -15,8 +15,9 @@ const FilterButton = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem>All</DropdownMenuItem>
-          <DropdownMenuItem>Text-to-Text</DropdownMenuItem>
-          <DropdownMenuItem>Text-to-Image</DropdownMenuItem>
+          <DropdownMenuItem>text-generation</DropdownMenuItem>
+          <DropdownMenuItem>text-to-image</DropdownMenuItem>
+          <DropdownMenuItem>image-to-video</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </>

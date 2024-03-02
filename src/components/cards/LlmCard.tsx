@@ -1,12 +1,9 @@
-"use client";
-
 import { LlmCardProps } from "@/util/types";
 import { ArrowRight, Download, ThumbsUp } from "lucide-react";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "../ui/button";
-
-//https://my-json-server.typicode.com/aryandutt/llm-models/models
+import { numberFormatter } from "@/util/numberFormatter";
 
 const LlmCard: React.FC<LlmCardProps> = ({
   author,
@@ -30,16 +27,16 @@ const LlmCard: React.FC<LlmCardProps> = ({
       </div>
       <div className="text-xl font-sans">{model}</div>
       <div className="flex">
-        <div>{tag}</div>
+        <div className="text-gray-600">{tag}</div>
         <span className="px-1.5 text-gray-300">•</span>
         <div className="flex items-center gap-2">
-          <ThumbsUp size={16} />
-          {likes}
+          <ThumbsUp size={16} color="#4b5563" />
+          <div className="text-gray-600">{numberFormatter(likes)}</div>
         </div>
         <span className="px-1.5 text-gray-300">•</span>
         <div className="flex items-center gap-2">
-          <Download size={16} />
-          {downloads}
+          <Download size={16} color="#4b5563" />
+          <div className="text-gray-600">{numberFormatter(downloads)}</div>
         </div>
       </div>
       <Button className="flex w-fit gap-x-2 bg-gray-700">
