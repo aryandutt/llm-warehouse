@@ -1,13 +1,19 @@
 import { ReactElement } from "react";
 
+export enum Sort {
+  Name = "Name",
+  Likes = "Likes",
+  Downloads = "Downloads",
+}
+
 export interface CategoryContainerProps {
   title: string;
   tags: TagCardProps[];
 }
 
 export interface TagCardProps {
-    tagName: string;
-    icon: ReactElement;
+  tagName: string;
+  icon: ReactElement;
 }
 
 export interface LlmCardProps {
@@ -17,4 +23,13 @@ export interface LlmCardProps {
   tag: string;
   likes: number;
   downloads: number;
+}
+
+export interface ModelInterface {
+  author: string;
+  avatarUrl: string;
+  downloads: number;
+  likes: number;
+  model: string;
+  tag: string;
 }
