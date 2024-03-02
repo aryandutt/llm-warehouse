@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="bg-white shadow-sm flex justify-between items-center px-6 py-2 sticky top-0">
+    <div className="bg-white shadow-sm flex justify-between items-center px-6 py-2 sticky top-0 z-50">
       <div className="flex items-center cursor-pointer">
         <BrainCircuit size={45} />
         <div className="mx-3 text-2xl font-mono font-semibold">
@@ -19,7 +19,7 @@ const NavBar = () => {
           </Button>
         </div>
         <div className="p-1">
-          <Button>
+          <Button color="red">
             <Link href="/">Signup</Link>
           </Button>
         </div>

@@ -9,3 +9,12 @@ export interface TagCardProps {
     tagName: string;
     icon: ReactElement;
 }
+
+export interface LlmCardProps {
+  author: string;
+  avatarUrl: string;
+  model: string;
+  tag: string;
+  likes: number;
+  downloads: number;
+}
