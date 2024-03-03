@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import { numberFormatter } from "@/util/numberFormatter";
+import Link from "next/link";
 
 const LlmCard: React.FC<LlmCardProps> = ({
   author,
@@ -39,10 +40,12 @@ const LlmCard: React.FC<LlmCardProps> = ({
           <div className="text-gray-600">{numberFormatter(downloads)}</div>
         </div>
       </div>
-      <Button className="flex w-fit gap-x-2 bg-gray-700">
-        <div>Explore</div>
-        <ArrowRight size={16} />
-      </Button>
+      <Link className="w-fit" href={`/${model}`}>
+        <Button className="flex w-fit gap-x-2 bg-gray-700">
+          <div>Explore</div>
+          <ArrowRight size={16} />
+        </Button>
+      </Link>
     </div>
   );
 };

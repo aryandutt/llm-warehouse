@@ -11,8 +11,6 @@ const LlmCardsWrapper = () => {
   const [models, setModels] = useRecoilState<ModelInterface[]>(modelAtom);
   const sort = useRecoilValue<Sort>(sortAtom);
 
-  console.log(models);
-
   useEffect(() => {
     if (sort === Sort.Likes) {
       setModels((prevModels: ModelInterface[]) => {
@@ -38,7 +36,7 @@ const LlmCardsWrapper = () => {
   return (
     <div className="flex justify-center">
       <div className="pt-10 pb-20 grid gap-x-20 gap-y-10 grid-cols-3">
-        {models.map((model: ModelInterface, index: number) => (
+        {models?.map((model: ModelInterface, index: number) => (
           <LlmCard
             key={index}
             author={model.author}

@@ -6,12 +6,14 @@ import Link from "next/link";
 const NavBar = () => {
   return (
     <div className="bg-white shadow-sm flex justify-between items-center px-6 py-2 sticky top-0 z-50">
-      <div className="flex items-center cursor-pointer">
-        <BrainCircuit size={45} />
-        <div className="mx-3 text-2xl font-mono font-semibold">
-          LLM Warehouse
+      <Link href="/">
+        <div className="flex items-center cursor-pointer">
+          <BrainCircuit size={45} />
+          <div className="mx-3 text-2xl font-mono font-semibold">
+            LLM Warehouse
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="flex">
         <div className="p-1">
           <Button variant={"outline"}>
