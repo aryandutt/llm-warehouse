@@ -6,7 +6,6 @@ import { RecoilRoot } from "recoil";
 export default function Home() {
   return (
     <RecoilRoot>
-      <NavBar />
       <Body />
     </RecoilRoot>
   );

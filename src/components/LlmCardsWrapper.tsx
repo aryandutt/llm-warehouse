@@ -11,6 +11,8 @@ const LlmCardsWrapper = () => {
   const [models, setModels] = useRecoilState<ModelInterface[]>(modelAtom);
   const sort = useRecoilValue<Sort>(sortAtom);
 
+  console.log(models);
+
   useEffect(() => {
     if (sort === Sort.Likes) {
       setModels((prevModels: ModelInterface[]) => {
