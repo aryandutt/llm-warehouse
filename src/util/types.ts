@@ -40,6 +40,7 @@ export interface ModelPageInterface {
   downloads: number;
   likes: number;
   tag: string;
+  api: string;
   content: {text: string, title: string}[];
 }
 
@@ -50,4 +51,10 @@ export interface PageHeaderInterface {
   likes: number;
   downloads: number;
   tag: string;
+}
+
+export enum Tags {
+  TextToImage = "text-to-image",
+  TextGeneration = "text-generation",
+  ImageToVideo = "image-to-video"
 }
