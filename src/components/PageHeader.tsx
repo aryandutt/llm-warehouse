@@ -3,6 +3,7 @@ import { PageHeaderInterface } from "@/util/types";
 import { Download, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import PageHeaderWrapper from "./PageHeaderWrapper";
 
 const PageHeader: React.FC<PageHeaderInterface> = ({
   avatarUrl,
@@ -13,7 +14,7 @@ const PageHeader: React.FC<PageHeaderInterface> = ({
   tag,
 }) => {
   return (
-    <div className="p-7 flex flex-col gap-3 shadow-sm shadow-neutral-200">
+    <PageHeaderWrapper>
       <div className="flex items-center gap-2">
         <Image
           src={avatarUrl}
@@ -41,7 +42,7 @@ const PageHeader: React.FC<PageHeaderInterface> = ({
           </div>
         </div>
       </div>
-    </div>
+    </PageHeaderWrapper>
   );
 };
 

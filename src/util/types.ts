@@ -1,3 +1,4 @@
+import ModelContent from "@/components/ModelContent";
 import { ReactElement } from "react";
 
 export enum Sort {
@@ -57,4 +58,15 @@ export enum Tags {
   TextToImage = "text-to-image",
   TextGeneration = "text-generation",
   ImageToVideo = "image-to-video"
+}
+
+export interface ModelContentInterface {
+  loading: boolean;
+  modelContent: {text: string, title: string}[];
+}
+
+export interface TryItOutInterface {
+  api: string;
+  tag: Tags;
+  loading: boolean;
 }
