@@ -1,10 +1,16 @@
-import ModelContent from "@/components/ModelContent";
 import { ReactElement } from "react";
 
 export enum Sort {
   Name = "Name",
   Likes = "Likes",
   Downloads = "Downloads",
+}
+
+export enum Filter {
+  All = "All",
+  TextToImage = "text-to-image",
+  TextGeneration = "text-generation",
+  ImageToVideo = "image-to-video",
 }
 
 export interface CategoryContainerProps {
@@ -42,7 +48,7 @@ export interface ModelPageInterface {
   likes: number;
   tag: string;
   api: string;
-  content: {text: string, title: string}[];
+  content: { text: string; title: string }[];
 }
 
 export interface PageHeaderInterface {
@@ -57,12 +63,12 @@ export interface PageHeaderInterface {
 export enum Tags {
   TextToImage = "text-to-image",
   TextGeneration = "text-generation",
-  ImageToVideo = "image-to-video"
+  ImageToVideo = "image-to-video",
 }
 
 export interface ModelContentInterface {
   loading: boolean;
-  modelContent: {text: string, title: string}[];
+  modelContent: { text: string; title: string }[];
 }
 
 export interface TryItOutInterface {

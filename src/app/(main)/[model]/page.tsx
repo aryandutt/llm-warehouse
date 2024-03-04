@@ -2,13 +2,9 @@
 import ModelContent from "@/components/ModelContent";
 import PageHeader from "@/components/PageHeader";
 import TryItOut from "@/components/TryItOut";
-import PageBodySkeleton from "@/components/skeletons/PageBodySkeleton";
 import PageHeaderSkeleton from "@/components/skeletons/PageHeaderSkeleton";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { ModelPageInterface, Tags } from "@/util/types";
-import { Boxes, Frown } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Page = ({ params }: { params: { model: string } }) => {
   const [modelContent, setModelContent] = useState<ModelPageInterface>();
@@ -24,6 +20,10 @@ const Page = ({ params }: { params: { model: string } }) => {
         headers: headers,
       }
     );
+    if(!response.ok) {
+      // route to 404
+      
+    }
     const data = await response.json();
     setModelContent(data[0]);
     setLoading(false);
@@ -32,8 +32,6 @@ const Page = ({ params }: { params: { model: string } }) => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  // Function to extract code snippet from text
 
   return (
     <div>

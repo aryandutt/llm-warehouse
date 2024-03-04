@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import TryItOutSkeleton from "./skeletons/TryItOutSkeleton";
+import TryItOutWrapper from "./TryItOutWrapper";
 
 const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
   const textRef = useRef<HTMLTextAreaElement>(null);
@@ -58,7 +59,7 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
     }
   };
   return (
-    <div className="flex-[2_2_0%] p-10 flex flex-col gap-20 ">
+    <TryItOutWrapper>
       {loading ? (
         <TryItOutSkeleton />
       ) : (
@@ -79,7 +80,10 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
               <div className="font-medium text-lg">Input Text</div>
               <Textarea
                 ref={textRef}
-                placeholder="Input text for completion"
+                className={
+                  tag === Tags.TextGeneration ? "min-h-[150px]" : "min-h-[50px]"
+                }
+                placeholder="Input text"
                 defaultValue={
                   tag === Tags.TextGeneration ? "Hi my name is Aryan" : "A dog"
                 }
@@ -98,7 +102,7 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
           )}
         </>
       )}
-    </div>
+    </TryItOutWrapper>
   );
 };
 
