@@ -7,8 +7,9 @@ const modelAtomSelector = selector({
     const headers = new Headers();
     headers.append(
       "X-Master-Key",
-      "$2a$10$pHFEUEhljnqDDsEyy1qBdO3bFvU8Gf2E9mIjOxuyy9tnOa3kYxpsK"
+      process.env.NEXT_PUBLIC_API_KEY as string
     );
+    headers.append("X-JSON-Path", '$.models.*');
     const response = await fetch(
       `https://api.jsonbin.io/v3/b/${process.env.NEXT_PUBLIC_BIN_ID}?meta=false`,
       {
@@ -17,11 +18,10 @@ const modelAtomSelector = selector({
       }
     );
     const data = await response.json();
-    const models = data.models;
-    models.sort((a: ModelInterface, b: ModelInterface) =>
+    data.sort((a: ModelInterface, b: ModelInterface) =>
       a.author.localeCompare(b.author)
     );
-    return models;
+    return data;
   },
 });
 

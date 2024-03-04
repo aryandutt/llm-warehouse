@@ -33,3 +33,21 @@ export interface ModelInterface {
   model: string;
   tag: string;
 }
+
+export interface ModelPageInterface {
+  author: string;
+  avatarUrl: string;
+  downloads: number;
+  likes: number;
+  tag: string;
+  content: {text: string, title: string}[];
+}
+
+export interface PageHeaderInterface {
+  avatarUrl: string;
+  author: string;
+  model: string;
+  likes: number;
+  downloads: number;
+  tag: string;
+}
