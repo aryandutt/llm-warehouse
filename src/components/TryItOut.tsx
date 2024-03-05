@@ -1,6 +1,6 @@
 import { Tags, TryItOutInterface } from "@/util/types";
-import { Boxes, Frown } from "lucide-react";
-import React, { useRef } from "react";
+import { Boxes, Frown, RefreshCw } from "lucide-react";
+import React, { useRef, useState } from "react";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import TryItOutSkeleton from "./skeletons/TryItOutSkeleton";
@@ -11,7 +11,10 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
 
   const divRef = useRef<HTMLDivElement>(null);
 
+  const [buttonLoading, setButtonLoading] = useState<boolean>(false);
+
   const getAndDisplayResponseText = async () => {
+    setButtonLoading(true);
     if (!textRef.current || !textRef.current.value.length) return;
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
@@ -25,9 +28,11 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
     });
     const data = await response.json();
     textRef.current.value = data[0].generated_text;
+    setButtonLoading(false);
   };
 
   const getAndDisplayResponseImage = async () => {
+    setButtonLoading(true);
     if (!textRef.current || !textRef.current.value.length) return;
 
     const headers = new Headers();
@@ -54,6 +59,7 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
       }
 
       divRef.current?.appendChild(img);
+      setButtonLoading(false);
     } else {
       console.error("Error fetching image:", response.statusText);
     }
@@ -76,7 +82,7 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
               </div>
             </div>
           ) : (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col items-center gap-4">
               <div className="font-medium text-lg">Input Text</div>
               <Textarea
                 ref={textRef}
@@ -89,15 +95,25 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
                 }
               />
               <Button
+                className="w-full flex gap-1"
+                disabled={buttonLoading}
                 onClick={
                   tag === Tags.TextGeneration
                     ? getAndDisplayResponseText
                     : getAndDisplayResponseImage
                 }
               >
-                <div className="p-4 text-lg">Generate</div>
+                <div className="p-4 text-lg">
+                  {buttonLoading ? "Generating" : "Generate"}
+                </div>
+                {buttonLoading && (
+                  <RefreshCw
+                    size={25}
+                    className="h-5 w-5 animate-spin animate-r"
+                  />
+                )}
               </Button>
-              <div ref={divRef}></div>
+              <div className="" ref={divRef}></div>
             </div>
           )}
         </>
