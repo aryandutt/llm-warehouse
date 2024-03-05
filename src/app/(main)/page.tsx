@@ -5,7 +5,7 @@ import { RecoilRoot } from "recoil";
 export default function Home() {
   return (
     <RecoilRoot>
-      <Body />
+      <Body/>
     </RecoilRoot>
   );
 }
