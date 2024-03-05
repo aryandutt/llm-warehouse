@@ -34,5 +34,5 @@ const modelAtomSelector = selector({
 
 export const modelAtom = atom<ModelInterface[]>({
   key: "modelAtom1",
-  default: modelAtomSelector || [],
+  default: [],
 });

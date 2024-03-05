@@ -13,6 +13,37 @@ const LlmCardsWrapper = () => {
   const filter = useRecoilValue<Filter>(filterAtom);
 
   useEffect(() => {
+    const fetchModels = async () => {
+      try {
+        const headers = new Headers();
+        headers.append(
+          "X-Master-Key",
+          process.env.NEXT_PUBLIC_API_KEY as string
+        );
+        headers.append("X-JSON-Path", '$.models.*');
+        const response = await fetch(
+          `https://api.jsonbin.io/v3/b/${process.env.NEXT_PUBLIC_BIN_ID}?meta=false`,
+          {
+            headers: headers,
+          }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch models");
+        }
+        const data = await response.json();
+        data.sort((a: ModelInterface, b: ModelInterface) =>
+          a.author.localeCompare(b.author)
+        );
+        setModels(data);
+      } catch (error) {
+        console.error("Error fetching models:", error);
+        throw error;
+      }
+    }
+    fetchModels();
+  }, []);
+
+  useEffect(() => {
     if (sort === Sort.Likes) {
       setModels((prevModels: ModelInterface[]) => {
         const sortedModels = [...prevModels];

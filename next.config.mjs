@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     domains: ["aeiljuispo.cloudimg.io"],
   },
-  staticPageGenerationTimeout: 600,
+  staticPageGenerationTimeout: 120,
 };
 
 export default nextConfig;
