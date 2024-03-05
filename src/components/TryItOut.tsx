@@ -26,9 +26,14 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
         parameters: { max_new_tokens: 30 },
       }),
     });
-    const data = await response.json();
-    textRef.current.value = data[0].generated_text;
-    setButtonLoading(false);
+    if (response.ok) {
+      const data = await response.json();
+      textRef.current.value = data[0].generated_text;
+      setButtonLoading(false);
+    } else {
+      console.error("Error fetching image:", response.statusText);
+      setButtonLoading(false);
+    }
   };
 
   const getAndDisplayResponseImage = async () => {
@@ -62,6 +67,7 @@ const TryItOut: React.FC<TryItOutInterface> = ({ loading, api, tag }) => {
       setButtonLoading(false);
     } else {
       console.error("Error fetching image:", response.statusText);
+      setButtonLoading(false);
     }
   };
   return (
