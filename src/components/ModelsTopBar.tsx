@@ -15,7 +15,7 @@ import {
 } from "./ui/dialog";
 import { Input } from "./ui/input";
 
-const TagTopBar = () => {
+const ModelsTopBar = () => {
   const models = useRecoilValue(modelAtom);
   return (
     <div className="pt-8 px-8 flex w-100vw justify-between items-baseline">
@@ -73,4 +73,4 @@ const TagTopBar = () => {
   );
 };
 
-export default TagTopBar;
+export default ModelsTopBar;

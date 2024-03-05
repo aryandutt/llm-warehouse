@@ -1,11 +1,11 @@
 import React from "react";
-import TagTopBar from "./TagTopBar";
+import ModelsTopBar from "./ModelsTopBar";
 import LlmCardsWrapper from "./LlmCardsWrapper";
 
 const Body = () => {
   return (
     <>
-      <TagTopBar />
+      <ModelsTopBar />
       <LlmCardsWrapper />
     </>
   );
