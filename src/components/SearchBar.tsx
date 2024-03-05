@@ -6,7 +6,7 @@ const SearchBar = () => {
     <>
       <Input
         type="search"
-        className="p-3 shadow-inner border-[1px] border-gray-200 border-solid focus:outline-none focus:shadow-md"
+        className="p-3 shadow-inner h-7 rounded-full border-[1px] border-gray-200 border-solid focus:outline-none focus:shadow-md"
         placeholder="Search Model"
       />
     </>
