@@ -1,14 +1,16 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LlmCard from "./cards/LlmCard";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { modelAtom } from "./atoms/models";
 import { sortAtom } from "./atoms/sort";
 import { Filter, ModelInterface, Sort } from "@/util/types";
 import { filterAtom } from "./atoms/filter";
+import LlmCardSkeleton from "./skeletons/LlmCardSkeleton";
 
 const LlmCardsWrapper = () => {
   const [models, setModels] = useRecoilState<ModelInterface[]>(modelAtom);
+  const [loading, setLoading] = useState<boolean>(true);
   const sort = useRecoilValue<Sort>(sortAtom);
   const filter = useRecoilValue<Filter>(filterAtom);
 
@@ -35,6 +37,7 @@ const LlmCardsWrapper = () => {
           a.author.localeCompare(b.author)
         );
         setModels(data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching models:", error);
         throw error;
@@ -68,24 +71,28 @@ const LlmCardsWrapper = () => {
   return (
     <div className="flex justify-center">
       <div className="pt-10 pb-20 grid gap-x-20 gap-y-10 grid-cols-3">
-        {models
-          ?.filter((model) => {
-            if (filter === Filter.All) {
-              return model;
-            }
-            return model.tag === filter;
-          })
-          .map((model: ModelInterface, index: number) => (
-            <LlmCard
-              key={index}
-              author={model.author}
-              avatarUrl={model.avatarUrl}
-              likes={model.likes}
-              downloads={model.downloads}
-              tag={model.tag}
-              model={model.model}
-            />
-          ))}
+        {loading
+          ? Array.from({ length: 9 }).map((_, index) => (
+              <LlmCardSkeleton key={index} />
+            ))
+          : models
+              ?.filter((model) => {
+                if (filter === Filter.All) {
+                  return model;
+                }
+                return model.tag === filter;
+              })
+              .map((model: ModelInterface, index: number) => (
+                <LlmCard
+                  key={index}
+                  author={model.author}
+                  avatarUrl={model.avatarUrl}
+                  likes={model.likes}
+                  downloads={model.downloads}
+                  tag={model.tag}
+                  model={model.model}
+                />
+              ))}
       </div>
     </div>
   );
