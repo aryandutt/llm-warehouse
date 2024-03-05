@@ -12,9 +12,6 @@ const TagTopBar = () => {
       <div className="flex gap-8 items-center">
         <div className="flex items-baseline gap-2">
           <div className="text-2xl from-stone-700 font-mono">Models</div>
-          <div className="text-sm from-stone-700 font-mono">
-            {models.length}
-          </div>
         </div>
         <SearchBar />
       </div>

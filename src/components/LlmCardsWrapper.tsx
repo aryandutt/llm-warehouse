@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useEffect } from "react";
 import LlmCard from "./cards/LlmCard";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -20,7 +20,7 @@ const LlmCardsWrapper = () => {
           "X-Master-Key",
           process.env.NEXT_PUBLIC_API_KEY as string
         );
-        headers.append("X-JSON-Path", '$.models.*');
+        headers.append("X-JSON-Path", "$.models.*");
         const response = await fetch(
           `https://api.jsonbin.io/v3/b/${process.env.NEXT_PUBLIC_BIN_ID}?meta=false`,
           {
@@ -39,7 +39,7 @@ const LlmCardsWrapper = () => {
         console.error("Error fetching models:", error);
         throw error;
       }
-    }
+    };
     fetchModels();
   }, []);
 
