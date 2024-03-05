@@ -1,5 +1,4 @@
-"use client";
-
+'use client';
 import React, { useEffect } from "react";
 import LlmCard from "./cards/LlmCard";
 import { useRecoilState, useRecoilValue } from "recoil";
